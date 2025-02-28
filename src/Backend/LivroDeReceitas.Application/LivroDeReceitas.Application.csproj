@@ -1,19 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.2" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\LivroDeReceitas.Communication\LivroDeReceitas.Communication.csproj" />
     <ProjectReference Include="..\..\Shared\LivroDeReceitas.Exceptions\LivroDeReceitas.Exceptions.csproj" />
-    <ProjectReference Include="..\LivroDeReceitas.Application\LivroDeReceitas.Application.csproj" />
+    <ProjectReference Include="..\LivroDeReceitas.Domain\LivroDeReceitas.Domain.csproj" />
+    <ProjectReference Include="..\LivroDeReceitas.Infra\LivroDeReceitas.Infra.csproj" />
   </ItemGroup>
 
 </Project>
