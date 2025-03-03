@@ -11,10 +11,27 @@ public class UserRegister
 {
     public UserRegisterDTO Execute(UserRegisterDTO request)
     {
+        Validate(request);
+
         //
         return new UserRegisterDTO
         {
             Name = request.Name,
         }; 
+    }
+
+    private void Validate(UserRegisterDTO userRegisterDTO)
+    {
+        var validator = new UserRegisterValidatior();
+
+        var result = validator.Validate(userRegisterDTO);
+
+        if (result.IsValid == false)
+        {
+            var errorMessages = result.Errors.Select(e => e.ErrorMessage);
+
+            throw new Exception();
+        }
+
     }
 }
