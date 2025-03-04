@@ -22,7 +22,7 @@ public class UserRegister
 
     private void Validate(UserRegisterDTO userRegisterDTO)
     {
-        var validator = new UserRegisterValidatior();
+        var validator = new UserRegisterValidator();
 
         var result = validator.Validate(userRegisterDTO);
 
