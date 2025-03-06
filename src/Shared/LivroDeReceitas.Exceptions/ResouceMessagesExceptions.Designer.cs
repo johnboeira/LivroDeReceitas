@@ -61,11 +61,38 @@ namespace LivroDeReceitas.Exceptions {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The email cannot be empty.
+        /// </summary>
+        public static string EMAIL_EMPTY {
+            get {
+                return ResourceManager.GetString("EMAIL_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Incorrect email format.
+        /// </summary>
+        public static string EMAIL_INCORRECT {
+            get {
+                return ResourceManager.GetString("EMAIL_INCORRECT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a The name cannot be empty.
         /// </summary>
         public static string NAME_EMPTY {
             get {
                 return ResourceManager.GetString("NAME_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Password must have at least 6 letters.
+        /// </summary>
+        public static string PASSWORD_LENGTH {
+            get {
+                return ResourceManager.GetString("PASSWORD_LENGTH", resourceCulture);
             }
         }
     }
