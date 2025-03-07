@@ -1,4 +1,6 @@
 
+using LivroDeReceitas.API.Middleware;
+
 namespace LivroDeReceitas.API
 {
     public class Program
@@ -20,6 +22,8 @@ namespace LivroDeReceitas.API
             {
                 app.MapOpenApi();
             }
+
+            app.UseMiddleware<CultureMiddleware>();
 
             app.UseHttpsRedirection();
 
