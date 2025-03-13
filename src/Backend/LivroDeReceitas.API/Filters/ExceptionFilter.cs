@@ -1,4 +1,5 @@
-﻿using LivroDeReceitas.Exceptions.ExecptionBase;
+﻿using LivroDeReceitas.Communication.Responses;
+using LivroDeReceitas.Exceptions.ExecptionBase;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Net;
@@ -23,7 +24,10 @@ public class ExceptionFilter : IExceptionFilter
     {
         if (context.Exception is ErrorOnValidationException)
         {
+            var exception = context.Exception as ErrorOnValidationException;
+
             context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+            context.Result = new BadRequestObjectResult(new ResponseErrorJson(exception.ErrorsMessages));
         }
     }
 }
