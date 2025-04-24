@@ -1,19 +1,27 @@
-﻿using LivroDeReceitas.Communication.Requests;
+﻿using LivroDeReceitas.Application.Services.AutoMapper;
+using LivroDeReceitas.Communication.Requests;
+using LivroDeReceitas.Domain.Entities;
 using LivroDeReceitas.Exceptions.ExecptionBase;
 
-namespace LivroDeReceitas.Application.Features.User.Register;
+namespace LivroDeReceitas.Application.Features.Users.Register;
 
-public class UserRegister
+public class UserRegisterUseCase
 {
     public UserRegisterDTO Execute(UserRegisterDTO request)
     {
         Validate(request);
 
-        //
+        var autoMapper = new AutoMapper.MapperConfiguration(opt =>
+        {
+            opt.AddProfile(new AutoMapping());
+        }).CreateMapper();
+
+        var user = autoMapper.Map<User>(request);
+
         return new UserRegisterDTO
         {
             Name = request.Name,
-        }; 
+        };
     }
 
     private void Validate(UserRegisterDTO userRegisterDTO)
@@ -28,6 +36,5 @@ public class UserRegister
 
             throw new ErrorOnValidationException(errorMessages);
         }
-
     }
 }

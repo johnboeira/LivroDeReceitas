@@ -1,4 +1,4 @@
-﻿using LivroDeReceitas.Application.Features.User.Register;
+﻿using LivroDeReceitas.Application.Features.Users.Register;
 using LivroDeReceitas.Communication.Requests;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,10 +9,10 @@ namespace LivroDeReceitas.API;
 public class UserController : ControllerBase
 {
     [HttpPost]
-    [ProducesResponseType(typeof(UserRegisterDTO),StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(UserRegisterDTO), StatusCodes.Status201Created)]
     public IActionResult Register(UserRegisterDTO request)
     {
-        var useCase = new UserRegister();
+        var useCase = new UserRegisterUseCase();
 
         var result = useCase.Execute(request);
 
