@@ -1,4 +1,5 @@
 ﻿using LivroDeReceitas.Application.Services.AutoMapper;
+using LivroDeReceitas.Application.Services.Cryptography;
 using LivroDeReceitas.Communication.Requests;
 using LivroDeReceitas.Domain.Entities;
 using LivroDeReceitas.Exceptions.ExecptionBase;
@@ -9,14 +10,18 @@ public class UserRegisterUseCase
 {
     public UserRegisterDTO Execute(UserRegisterDTO request)
     {
-        Validate(request);
+        var criptografiaDeSenha = new PasswordEncripter();
 
         var autoMapper = new AutoMapper.MapperConfiguration(opt =>
         {
             opt.AddProfile(new AutoMapping());
         }).CreateMapper();
 
+        Validate(request);
+
         var user = autoMapper.Map<User>(request);
+
+        user.Password = criptografiaDeSenha.Encrypt(request.Password);
 
         return new UserRegisterDTO
         {
